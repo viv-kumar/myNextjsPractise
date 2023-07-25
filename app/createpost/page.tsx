@@ -21,9 +21,7 @@ const page = () => {
  const onAdd=()=>{
     const savedDataString = localStorage.getItem("myData");
     console.log(savedDataString)
-    // if (savedDataString) {
-      // Parse the JSON string back to a data object
-    //   savedData.push({ ...user, id: savedData.length + 1 });
+    
       const savedData = JSON.parse(savedDataString);
       console.log(savedData)
        savedData.push({...user,id:savedData.length+1})
@@ -31,15 +29,7 @@ const page = () => {
        localStorage.setItem("myData",updatedUser)
        setUser({ userId: "", id: "", title: "", body: "" });
        router.push("./")
-    // }
-    // setData((prevData) => [...prevData, {...user,id:data.length+1}]);
-    // const savedDataString = localStorage.getItem("myData");
-    
-    //  const dataString = JSON.stringify(data);
-    //  // Save the JSON string to local storage with a key
-    //  localStorage.setItem("myData", dataString);
-    //  document.getElementById("title").innerText=""
-    //  document.getElementById("post").innerText = "";
+   
  }
 
   useEffect(() => {

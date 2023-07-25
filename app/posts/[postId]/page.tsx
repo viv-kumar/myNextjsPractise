@@ -1,65 +1,68 @@
-"use client"
-import React, { useEffect, useState } from 'react'
+"use client";
+import React, { useEffect, useState } from "react";
 
-function page({params}:{params: {
-    postId: number
-}}) {
-    // const router = useRouter();
- const [user,setUser]=useState(null)
- const [inputValue, setInputValue] = useState("");
- const [stringArray, setStringArray] = useState([]);
- const [users, setUsers] = useState([]);
- const [comment, setComment] = useState([]);
-  useEffect(()=>{
+function page({
+  params,
+}: {
+  params: {
+    postId: number;
+  };
+}) {
+  // const router = useRouter();
+  const [user, setUser] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+  const [stringArray, setStringArray] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [comment, setComment] = useState([]);
+  useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
       .then((response) => response.json())
       .then((json) => setUser(json));
-     
-  },[])
-   const handleComment = (e) => {
-     e.stopPropagation();
+  }, []);
+  const handleComment = (e) => {
+    e.stopPropagation();
 
-     const savedDataString = localStorage.getItem("myStringArray");
-     if (savedDataString) {
-       // Parse the JSON string back to a data array
-       const savedData = JSON.parse(savedDataString);
-       setComment(savedData);
-     }
-   };
-   const addComment = (e) => {
-     e.stopPropagation();
-     setStringArray((prevArray) => [...prevArray, inputValue]);
-     setInputValue("");
-     const jsonString = JSON.stringify(stringArray);
-     // Save the JSON string to local storage with a specific key
-     localStorage.setItem("myStringArray", jsonString);
-     // setInputValue("");
-   };
-   console.log(user);
+    const savedDataString = localStorage.getItem("myStringArray");
+    if (savedDataString) {
+      // Parse the JSON string back to a data array
+      const savedData = JSON.parse(savedDataString);
+      setComment(savedData);
+    }
+  };
+  const addComment = (e) => {
+    e.stopPropagation();
+    setStringArray((prevArray) => [...prevArray, inputValue]);
+    setInputValue("");
+    const jsonString = JSON.stringify(stringArray);
+    // Save the JSON string to local storage with a specific key
+    localStorage.setItem("myStringArray", jsonString);
+    // setInputValue("");
+  };
+  console.log(user);
   return (
     <>
       {user ? (
-        <div class="flex justify-center alignItem-center p-4 ">
-          <article class="flex max-w-xl flex-col items-start justify-between">
-            <div class="flex items-center gap-x-4 text-xs">
-              <time datetime="2020-03-16" class="text-gray-500">
+        <div className="flex justify-center alignItem-center p-4 ">
+          <article className="flex max-w-xl flex-col items-start justify-between">
+            <div className="flex items-center gap-x-4 text-xs">
+              <time  className="text-gray-500">
                 Mar 16, 2020
               </time>
               <a
                 href="#"
-                class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
               >
                 Marketing
               </a>
             </div>
-            <div class="group relative">
-              <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            <div className="group relative">
+              <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                 <a href="#">
-                  <span class="absolute inset-0"></span>
+                  <span className="absolute inset-0"></span>
                   {user.title}
                 </a>
               </h3>
-              <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+              <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
                 {user.body}
               </p>
             </div>
@@ -95,4 +98,4 @@ function page({params}:{params: {
   );
 }
 
-export default page
+export default page;
