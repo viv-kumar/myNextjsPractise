@@ -21,14 +21,13 @@ const page = () => {
  const onAdd=()=>{
     const savedDataString = localStorage.getItem("myData");
     console.log(savedDataString)
-    
       const savedData = JSON.parse(savedDataString);
       console.log(savedData)
-       savedData.push({...user,id:savedData.length+1})
+       savedData.push(user)
        const updatedUser=JSON.stringify(savedData)
        localStorage.setItem("myData",updatedUser)
        setUser({ userId: "", id: "", title: "", body: "" });
-       router.push("./")
+    //    router.push("./")
    
  }
 
