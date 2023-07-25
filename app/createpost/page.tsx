@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
+import  useRouter  from "next/navigation";
 import { useState, useEffect } from "react";
 
 const page = () => {
@@ -68,7 +68,7 @@ const page = () => {
         type="text"
         id="post"
         required
-        value={user.post}
+        value={user.body}
         placeholder="Add post"
         onChange={(e) => setUser({ ...user, body: e.target.value })}
       />
