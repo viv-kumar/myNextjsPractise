@@ -30,6 +30,7 @@ const page = () => {
        const updatedUser=JSON.stringify(savedData)
        localStorage.setItem("myData",updatedUser)
        setUser({ userId: "", id: "", title: "", body: "" });
+       router.push("./")
     // }
     // setData((prevData) => [...prevData, {...user,id:data.length+1}]);
     // const savedDataString = localStorage.getItem("myData");
